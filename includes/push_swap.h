@@ -33,7 +33,7 @@ int			is_sorted(t_list *stack);
 static int	is_int(char *str);
 
 /* instructions.c */
-
+void		run(char *cmd, t_list **stack_a, t_list **stack_b, int x);
 
 /* sort.c */
 
