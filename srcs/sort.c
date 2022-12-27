@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 13:43:57 by pbureera          #+#    #+#             */
-/*   Updated: 2022/12/20 13:43:57 by pbureera         ###   ########.fr       */
+/*   Created: 2022/12/28 00:42:40 by pbureera          #+#    #+#             */
+/*   Updated: 2022/12/28 00:42:40 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_arg(char *str)
+void	sort(t_list **stack)
 {
-	int	i;
-	int	len;
-
-	i = 0;
-	if (str[i] == '-' && !)
+	if (ft_lstsize(*stack) == 2)
+		run("sa", stack,0 , 1);
 }

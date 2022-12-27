@@ -15,27 +15,15 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*tab;
-	int		i;
-	int		j;
+	size_t	len;
 
-	i = 0;
-	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	tab = (char *)malloc(sizeof(*tab) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	tab = malloc(sizeof(char) * (len + 1));
 	if (tab == 0)
 		return (NULL);
-	while (s1[i])
-	{
-		tab[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		tab[i] = s2[j];
-		j++;
-		i++;
-	}
-	tab[i] = '\0';
+	ft_strlcpy(tab, s1, len + 1);
+	ft_strlcat(tab, s2, len + 1);
 	return (tab);
 }

@@ -14,15 +14,25 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	t_comp	*result;
 	int		len;
+	char	**array;
+	t_list	*stack;
 
-	stack_a = init_stack(argc, argv);
-	if (!stack_a)
+	if (argc > 1)
 	{
-		write(2, "Error\n", 6);
-		return (0);
+		array = 0;
+		len = split_argv(&array, argv + 1, " ");
+		if (!len || !is_valid(array))
+		{
+			ps_free(array);
+			ft_putendl_fd("Error", 2);
+			return (1);
+		}
+		stack = 0;
+		while (len--)
+			ft_lstadd_front(&stack, ft_lstnew(array[len]));
+		if (!is_sorted(stack))
+			sort(&stack);
 	}
 }
+

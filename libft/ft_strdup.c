@@ -15,17 +15,12 @@
 char	*ft_strdup(const char *s)
 {
 	char	*tab;
-	int		i;
+	size_t	len;
 
-	i = 0;
-	tab = (char *)malloc(sizeof(*tab) * (ft_strlen(s) + 1));
+	len = ft_strlen(s);
+	tab = malloc(sizeof(char) * (len + 1));
 	if (!tab)
 		return (NULL);
-	while (s[i])
-	{
-		tab[i] = s[i];
-		i++;
-	}
-	tab[i] = '\0';
+	ft_strlcpy(tab, s, len + 1);
 	return (tab);
 }

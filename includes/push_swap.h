@@ -12,28 +12,30 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "libft.h"
+# include "../libft/libft.h"
+# include <stdlib.h>
+# include <limits.h>
+# include <stddef.h>
 
-typedef struct s_stack
+# define BUFFEER_SIZE 5
+
+typedef struct s_list
 {
-	int				num;
-	int				diff;
-	struct s_stack	*next;
-}					t_stack;
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
-typedef struct s_comp
-{
-	int			rotator;
-	char		*final;
-}				t_comp;
+/* utils.c */
+int			split_argv(char ***array, char **argv, char *split);
+int			is_sorted(t_list *stack);
 
-/* check_error.c */
+/* is_valid.c */
+static int	is_int(char *str);
+
+/* instructions.c */
 
 
-/* init_stack.c */
-t_stack	*new_node(void);
-t_stack	*init_stack(int argc, char **argv);
+/* sort.c */
 
-/* push_swap.c */
 
 #endif
