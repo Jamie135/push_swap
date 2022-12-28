@@ -12,6 +12,16 @@
 
 #include "../includes/push_swap.h"
 
+static void	free_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		free(array[i++]);
+	free(array);
+}
+
 int	split_argv(char ***array, char **argv, char *split)
 {
 	char	*str;

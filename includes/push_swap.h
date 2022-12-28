@@ -13,6 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
+# include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <stddef.h>
@@ -26,6 +27,7 @@ typedef struct s_list
 }	t_list;
 
 /* utils.c */
+static void	free_array(char **array);
 int			split_argv(char ***array, char **argv, char *split);
 int			is_sorted(t_list *stack);
 
