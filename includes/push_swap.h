@@ -28,6 +28,7 @@ typedef struct s_list
 
 /* utils.c */
 static void	free_array(char **array);
+static int	message_error(void);
 int			split_argv(char ***array, char **argv, char *split);
 int			is_sorted(t_list *stack);
 
@@ -50,6 +51,9 @@ int			stack_max(t_list *stack);
 int			min(int a, int b);
 
 /* sort.c */
+void		sort(t_list **stack);
 
+/* get_next_line.c */
+char		*get_next_line(char **str);
 
 #endif

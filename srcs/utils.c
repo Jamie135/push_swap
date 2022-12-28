@@ -22,6 +22,12 @@ static void	free_array(char **array)
 	free(array);
 }
 
+static int	message_error(void)
+{
+	ft_putendl_fd("Error", 2);
+	return (1);
+}
+
 int	split_argv(char ***array, char **argv, char *split)
 {
 	char	*str;
