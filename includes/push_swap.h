@@ -33,7 +33,19 @@ int			is_sorted(t_list *stack);
 static int	is_int(char *str);
 
 /* instructions.c */
+int			ft_abs(int i);
 void		run(char *cmd, t_list **stack_a, t_list **stack_b, int x);
+
+/* sort_big_utils */
+int			stack_id_minmax(t_list *stack, int n);
+static int	stack_id_mid(t_list *stack, int n);
+void		get_min_rotate(t_list *stack_a, t_list *stack_b, int *a, int *b);
+void		rotate_same(t_list **stack_a, t_list **stack_b, int a, int b);
+
+/* sort_utils.c */
+int			stack_min(t_list *stack);
+int			stack_max(t_list *stack);
+int			min(int a, int b);
 
 /* sort.c */
 

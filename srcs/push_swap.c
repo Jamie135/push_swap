@@ -33,6 +33,8 @@ int	main(int argc, char **argv)
 			ft_lstadd_front(&stack, ft_lstnew(array[len]));
 		if (!is_sorted(stack))
 			sort(&stack);
+		ft_lstclear(&stack, free);
+		free(array);
 	}
+	return (0);
 }
-
