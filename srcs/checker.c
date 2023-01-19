@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 23:52:13 by pbureera          #+#    #+#             */
-/*   Updated: 2022/12/27 23:52:13 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 10:54:59 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	free_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		free(array[i++]);
+	free(array);
+}
+
+static int	message_error(void)
+{
+	ft_putendl_fd("Error", 2);
+	return (1);
+}
 
 static int	parse(char *str, t_list **stack_1, t_list **stack_2)
 {

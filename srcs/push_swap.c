@@ -6,11 +6,21 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 13:19:26 by pbureera          #+#    #+#             */
-/*   Updated: 2022/12/20 13:19:26 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 10:52:01 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	free_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		free(array[i++]);
+	free(array);
+}
 
 int	main(int argc, char **argv)
 {
@@ -24,7 +34,7 @@ int	main(int argc, char **argv)
 		len = split_argv(&array, argv + 1, " ");
 		if (!len || !is_valid(array))
 		{
-			ps_free(array);
+			free_array(array);
 			ft_putendl_fd("Error", 2);
 			return (1);
 		}

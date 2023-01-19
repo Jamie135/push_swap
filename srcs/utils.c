@@ -6,27 +6,11 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:16:48 by pbureera          #+#    #+#             */
-/*   Updated: 2022/12/27 19:16:48 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 10:54:41 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	free_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-		free(array[i++]);
-	free(array);
-}
-
-static int	message_error(void)
-{
-	ft_putendl_fd("Error", 2);
-	return (1);
-}
 
 int	split_argv(char ***array, char **argv, char *split)
 {

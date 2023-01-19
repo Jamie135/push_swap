@@ -6,7 +6,7 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:05:18 by pbureera          #+#    #+#             */
-/*   Updated: 2022/12/20 12:05:18 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:01:48 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,12 @@
 
 # define BUFFEER_SIZE 5
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
 /* utils.c */
-static void	free_array(char **array);
-static int	message_error(void);
 int			split_argv(char ***array, char **argv, char *split);
 int			is_sorted(t_list *stack);
 
 /* is_valid.c */
-static int	is_int(char *str);
+int			is_valid(char **array);
 
 /* instructions.c */
 int			ft_abs(int i);
@@ -41,9 +33,9 @@ void		run(char *cmd, t_list **stack_a, t_list **stack_b, int x);
 
 /* sort_big_utils */
 int			stack_id_minmax(t_list *stack, int n);
-static int	stack_id_mid(t_list *stack, int n);
 void		get_min_rotate(t_list *stack_a, t_list *stack_b, int *a, int *b);
 void		rotate_same(t_list **stack_a, t_list **stack_b, int a, int b);
+void		rotate_diff(t_list **stack_a, t_list **stack_b, int a, int b);
 
 /* sort_utils.c */
 int			stack_min(t_list *stack);
