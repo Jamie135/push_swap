@@ -6,7 +6,7 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 01:45:17 by pbureera          #+#    #+#             */
-/*   Updated: 2022/12/29 01:45:17 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:29:19 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	gnl_read(char *buff, char **str)
 				free(tmp);
 			}
 			if (ft_strchr(buff, '\n'))
-				break;
+				break ;
 			i = read(0, buff, BUFFEER_SIZE);
 		}
 	}
