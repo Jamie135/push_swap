@@ -6,7 +6,7 @@
 #    By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 23:03:01 by pbureera          #+#    #+#              #
-#    Updated: 2023/01/19 11:12:28 by pbureera         ###   ########.fr        #
+#    Updated: 2023/01/19 12:34:14 by pbureera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS 	= ft_isalnum.c ft_isdigit.c ft_memccpy.c ft_memcpy.c ft_putchar_fd.c\
 		ft_memcmp.c ft_memset.c ft_putnbr_fd.c ft_strchr.c ft_strlcat.c\
 		ft_strmapi.c ft_strrchr.c ft_tolower.c ft_strcmp.c ft_lstnew.c\
 		ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
-		ft_lstclear.c ft_lstiter.c ft_lstmap.c
+		ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_abs.c ft_atol.c ft_isspace.c
 OBJS 	= ${SRCS:.c=.o}
 SRCS_B	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c

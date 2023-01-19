@@ -1,81 +1,82 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*   sort_big_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 00:10:20 by pbureera          #+#    #+#             */
-/*   Updated: 2022/12/29 00:10:20 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:22:31 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../libft/libft.h"
 
-int	stack_id_minmax(t_list *stack, int n)
-{
-	int			num;
-	int			x;
-	const int	size = ft_lstsize(stack);
-
-	num = 0;
-	x = stack_max(stack);
-	if (n <= stack_min(stack))
-		x = stack_min(stack);
-	else
-		++num;
-	while (stack)
-	{
-		if (ft_atoi(stack->content) == x)
-			break;
-		++num;
-		stack = stack->next;
-	}
-	if (num >= (size + 1) / 2)
-		num = -1 * (size - num);
-	return (num);
-}
-
-static int	stack_id_mid(t_list *stack, int n)
+static int	stack_idx_mid(t_list *stack, int num)
 {
 	int			current;
 	int			next;
-	int			num;
+	int			ret;
 	const int	size = ft_lstsize(stack);
 
-	num = -1;
+	ret = 1;
 	while (stack->next)
 	{
 		current = ft_atoi(stack->content);
 		next = ft_atoi(stack->next->content);
-		if (n > current && n < next)
-			break;
-		++num;
+		if (num > current && num < next)
+			break ;
+		++ret;
 		stack = stack->next;
 	}
-	if (num == size)
-		num = 0;
-	else if (num >= (size + 1) / 2)
-		num = -1 * (size - num);
-	return (num);
+	if (ret == size)
+		ret = 0;
+	else if (ret >= (size + 1) / 2)
+		ret = -1 * (size - ret);
+	return (ret);
+}
+
+int	stack_idx_minmax(t_list *stack, int num)
+{
+	int			ret;
+	int			x;
+	const int	size = ft_lstsize(stack);
+
+	ret = 0;
+	x = stack_max(stack);
+	if (num <= stack_min(stack))
+		x = stack_min(stack);
+	else
+		++ret;
+	while (stack)
+	{
+		if (ft_atoi(stack->content) == x)
+			break ;
+		++ret;
+		stack = stack->next;
+	}
+	if (ret >= (size + 1) / 2)
+		ret = -1 * (size - ret);
+	return (ret);
 }
 
 void	get_min_rotate(t_list *stack_a, t_list *stack_b, int *a, int *b)
 {
 	int			i;
 	int			j;
-	int			n;
+	int			num;
 	int			x;
 	const int	size_b = ft_lstsize(stack_b);
 
 	x = -1;
 	while (stack_b && ++x >= 0)
 	{
-		n = ft_atoi(stack_b->content);
-		if (n < stack_min(stack_a) || n > stack_max(stack_a))
-			i = stack_id_minmax(stack_a, n);
+		num = ft_atoi(stack_b->content);
+		if (num < stack_min(stack_a) || num > stack_max(stack_a))
+			i = stack_idx_minmax(stack_a, num);
 		else
-			i = stack_id_mid(stack_a, n);
+			i = stack_idx_mid(stack_a, num);
 		j = x;
 		if (x >= (size_b + 1) / 2)
 			j = -1 * (size_b - x);

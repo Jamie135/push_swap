@@ -6,11 +6,12 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 13:19:26 by pbureera          #+#    #+#             */
-/*   Updated: 2023/01/19 10:52:01 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:17:17 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../libft/libft.h"
 
 static void	free_array(char **array)
 {

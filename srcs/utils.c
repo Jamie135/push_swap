@@ -6,17 +6,50 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:16:48 by pbureera          #+#    #+#             */
-/*   Updated: 2023/01/19 10:54:41 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:19:03 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../libft/libft.h"
 
-int	split_argv(char ***array, char **argv, char *split)
+static int	is_int(char *str)
 {
+	int	i;
+
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		++i;
+	while (str[i])
+		if (!ft_isdigit(str[i++]))
+			return (0);
+	if (ft_atol(str) < INT_MIN || ft_atol(str) > INT_MAX)
+		return (0);
+	return (1);
+}
+
+static int	has_duplicate(int *nums, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < len - 1)
+	{
+		j = i + 1;
+		while (j < len)
+			if (nums[i] == nums[j++])
+				return (1);
+		++i;
+	}
+	return (0);
+}
+
+int	split_argv(char ***strs, char **argv, char *sep)
+{
+	int		ret;
 	char	*str;
 	char	*tmp;
-	int		i;
 
 	str = 0;
 	while (*argv)
@@ -26,19 +59,43 @@ int	split_argv(char ***array, char **argv, char *split)
 		else
 		{
 			tmp = str;
-			str = ft_strjoin(str, split);
+			str = ft_strjoin(str, sep);
 			free(tmp);
 			tmp = str;
 			str = ft_strjoin(str, *argv++);
 			free(tmp);
 		}
 	}
-	*array = ft_split(str, *split);
+	*strs = ft_split(str, *sep);
 	free(str);
+	ret = 0;
+	while ((*strs)[ret])
+		++ret;
+	return (ret);
+}
+
+int	is_valid(char **strs)
+{
+	int	i;
+	int	tmp;
+	int	ret;
+	int	*nums;
+
 	i = 0;
-	while ((*array)[i])
-		i++;
-	return (i); 
+	ret = 0;
+	while (strs[i])
+		if (!is_int(strs[i++]))
+			return (ret);
+	nums = malloc(sizeof(int) * i);
+	if (!nums)
+		return (ret);
+	tmp = i;
+	while (i--)
+		nums[i] = ft_atoi(strs[i]);
+	if (!has_duplicate(nums, tmp))
+		ret = 1;
+	free(nums);
+	return (ret);
 }
 
 int	is_sorted(t_list *stack)

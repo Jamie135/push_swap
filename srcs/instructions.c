@@ -6,79 +6,73 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 00:49:26 by pbureera          #+#    #+#             */
-/*   Updated: 2022/12/28 00:49:26 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:19:52 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../libft/libft.h"
 
-int	ft_abs(int i)
-{
-	if (i < 0)
-		return (-i);
-	return (i);
-}
-
-static void	sx(t_list **stack_a, t_list **stack_b)
+static void	sx(t_list **stack_1, t_list **stack_2)
 {
 	t_list	*tmp;
 
-	(void)stack_b;
-	if (ft_lstsize(*stack_a) >= 2)
+	(void)stack_2;
+	if (ft_lstsize(*stack_1) >= 2)
 	{
-		tmp = (*stack_a)->next;
-		(*stack_a)->next = tmp->next;
-		ft_lstadd_front(stack_a, tmp);
+		tmp = (*stack_1)->next;
+		(*stack_1)->next = tmp->next;
+		ft_lstadd_front(stack_1, tmp);
 	}
 }
 
-static void	px(t_list **stack_a, t_list **stack_b)
+static void	px(t_list **stack_1, t_list **stack_2)
 {
 	t_list	*tmp;
 
-	if (ft_lstsize(*stack_a))
+	if (ft_lstsize(*stack_1))
 	{
-		tmp = *stack_a;
-		*stack_a = (*stack_a)->next;
-		ft_lstadd_front(stack_b, tmp);
+		tmp = *stack_1;
+		*stack_1 = (*stack_1)->next;
+		ft_lstadd_front(stack_2, tmp);
 	}
 }
 
-static void	rx(t_list **stack_a, t_list **stack_b)
+static void	rx(t_list **stack_1, t_list **stack_2)
 {
 	t_list	*tmp;
 
-	(void)stack_b;
-	if (ft_lstsize(*stack_a) >= 2)
+	(void)stack_2;
+	if (ft_lstsize(*stack_1) >= 2)
 	{
-		tmp = *stack_a;
-		*stack_a = (*stack_a)->next;
+		tmp = *stack_1;
+		*stack_1 = (*stack_1)->next;
 		tmp->next = 0;
-		ft_lstadd_back(stack_a, tmp);
+		ft_lstadd_back(stack_1, tmp);
 	}
 }
 
-static void	rrx(t_list **stack_a, t_list **stack_b)
+static void	rrx(t_list **stack_1, t_list **stack_2)
 {
 	t_list	*last;
 	t_list	*tmp;
 
-	(void)stack_b;
-	if (ft_lstsize(*stack_a) >= 2)
+	(void)stack_2;
+	if (ft_lstsize(*stack_1) >= 2)
 	{
-		last = *stack_a;
+		last = *stack_1;
 		while (last->next)
 		{
 			tmp = last;
 			last = last->next;
 		}
 		tmp->next = 0;
-		last->next = *stack_a;
-		*stack_a = last;
+		last->next = *stack_1;
+		*stack_1 = last;
 	}
 }
 
-void	run(char *cmd, t_list **stack_a, t_list **stack_b, int x)
+void	run(char *cmd, t_list **stack_1, t_list **stack_2, int x)
 {
 	int			tmp;
 	void		(*f)(t_list **, t_list **);
@@ -97,9 +91,9 @@ void	run(char *cmd, t_list **stack_a, t_list **stack_b, int x)
 		f = &rrx;
 	while (tmp--)
 	{
-		f(stack_a, stack_b);
-		if (stack_b && f != px)
-			f(stack_b, 0);
+		f(stack_1, stack_2);
+		if (stack_2 && f != px)
+			f(stack_2, 0);
 		if (x > 0)
 			ft_putendl_fd(cmd, 1);
 	}
