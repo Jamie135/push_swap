@@ -6,14 +6,14 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 00:10:20 by pbureera          #+#    #+#             */
-/*   Updated: 2023/01/19 13:22:31 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:47:40 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-static int	stack_idx_mid(t_list *stack, int num)
+static int	stack_middle(t_list *stack, int num)
 {
 	int			current;
 	int			next;
@@ -37,7 +37,7 @@ static int	stack_idx_mid(t_list *stack, int num)
 	return (ret);
 }
 
-int	stack_idx_minmax(t_list *stack, int num)
+int	stack_minmax(t_list *stack, int num)
 {
 	int			ret;
 	int			x;
@@ -61,7 +61,7 @@ int	stack_idx_minmax(t_list *stack, int num)
 	return (ret);
 }
 
-void	get_min_rotate(t_list *stack_a, t_list *stack_b, int *a, int *b)
+void	rotate_min(t_list *stack_a, t_list *stack_b, int *a, int *b)
 {
 	int			i;
 	int			j;
@@ -74,9 +74,9 @@ void	get_min_rotate(t_list *stack_a, t_list *stack_b, int *a, int *b)
 	{
 		num = ft_atoi(stack_b->content);
 		if (num < stack_min(stack_a) || num > stack_max(stack_a))
-			i = stack_idx_minmax(stack_a, num);
+			i = stack_minmax(stack_a, num);
 		else
-			i = stack_idx_mid(stack_a, num);
+			i = stack_middle(stack_a, num);
 		j = x;
 		if (x >= (size_b + 1) / 2)
 			j = -1 * (size_b - x);
@@ -93,19 +93,19 @@ void	rotate_same(t_list **stack_a, t_list **stack_b, int a, int b)
 {
 	if (a >= 0 && b >= 0)
 	{
-		run("rr", stack_a, stack_b, min(ft_abs(a), ft_abs(b)));
+		instruct("rr", stack_a, stack_b, min(ft_abs(a), ft_abs(b)));
 		if (ft_abs(a) <= ft_abs(b))
-			run("rb", stack_b, 0, ft_abs(ft_abs(a) - ft_abs(b)));
+			instruct("rb", stack_b, 0, ft_abs(ft_abs(a) - ft_abs(b)));
 		else
-			run("ra", stack_a, 0, ft_abs(ft_abs(a) - ft_abs(b)));
+			instruct("ra", stack_a, 0, ft_abs(ft_abs(a) - ft_abs(b)));
 	}
 	else
 	{
-		run("rrr", stack_a, stack_b, min(ft_abs(a), ft_abs(b)));
+		instruct("rrr", stack_a, stack_b, min(ft_abs(a), ft_abs(b)));
 		if (ft_abs(a) <= ft_abs(b))
-			run("rrb", stack_b, 0, ft_abs(ft_abs(a) - ft_abs(b)));
+			instruct("rrb", stack_b, 0, ft_abs(ft_abs(a) - ft_abs(b)));
 		else
-			run("rra", stack_a, 0, ft_abs(ft_abs(a) - ft_abs(b)));
+			instruct("rra", stack_a, 0, ft_abs(ft_abs(a) - ft_abs(b)));
 	}
 }
 
@@ -113,12 +113,12 @@ void	rotate_diff(t_list **stack_a, t_list **stack_b, int a, int b)
 {
 	if (a >= 0 && b < 0)
 	{
-		run("ra", stack_a, 0, a);
-		run("rrb", stack_b, 0, ft_abs(min(a, b)));
+		instruct("ra", stack_a, 0, a);
+		instruct("rrb", stack_b, 0, ft_abs(min(a, b)));
 	}
 	else
 	{
-		run("rb", stack_b, 0, b);
-		run("rra", stack_a, 0, ft_abs(min(a, b)));
+		instruct("rb", stack_b, 0, b);
+		instruct("rra", stack_a, 0, ft_abs(min(a, b)));
 	}
 }

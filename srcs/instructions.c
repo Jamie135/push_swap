@@ -6,7 +6,7 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 00:49:26 by pbureera          #+#    #+#             */
-/*   Updated: 2023/01/19 13:19:52 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:37:56 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	rrx(t_list **stack_1, t_list **stack_2)
 	}
 }
 
-void	run(char *cmd, t_list **stack_1, t_list **stack_2, int x)
+void	instruct(char *cmd, t_list **stack_1, t_list **stack_2, int x)
 {
 	int			tmp;
 	void		(*f)(t_list **, t_list **);

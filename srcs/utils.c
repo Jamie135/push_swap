@@ -6,7 +6,7 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:16:48 by pbureera          #+#    #+#             */
-/*   Updated: 2023/01/19 13:19:03 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:35:09 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_int(char *str)
 	return (1);
 }
 
-static int	has_duplicate(int *nums, int len)
+static int	is_duplicate(int *nums, int len)
 {
 	int	i;
 	int	j;
@@ -45,7 +45,7 @@ static int	has_duplicate(int *nums, int len)
 	return (0);
 }
 
-int	split_argv(char ***strs, char **argv, char *sep)
+int	split_list(char ***strs, char **argv, char *sep)
 {
 	int		ret;
 	char	*str;
@@ -74,7 +74,7 @@ int	split_argv(char ***strs, char **argv, char *sep)
 	return (ret);
 }
 
-int	is_valid(char **strs)
+int	valid_arg(char **strs)
 {
 	int	i;
 	int	tmp;
@@ -92,13 +92,13 @@ int	is_valid(char **strs)
 	tmp = i;
 	while (i--)
 		nums[i] = ft_atoi(strs[i]);
-	if (!has_duplicate(nums, tmp))
+	if (!is_duplicate(nums, tmp))
 		ret = 1;
 	free(nums);
 	return (ret);
 }
 
-int	is_sorted(t_list *stack)
+int	valid_sort(t_list *stack)
 {
 	while (stack->next)
 	{

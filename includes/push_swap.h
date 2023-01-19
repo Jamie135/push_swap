@@ -6,7 +6,7 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:05:18 by pbureera          #+#    #+#             */
-/*   Updated: 2023/01/19 13:23:10 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:47:48 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # define BUFFEER_SIZE 5
 
 /* utils.c */
-int			split_argv(char ***array, char **argv, char *split);
-int			is_valid(char **array);
-int			is_sorted(t_list *stack);
+int			split_list(char ***array, char **argv, char *split);
+int			valid_arg(char **array);
+int			valid_sort(t_list *stack);
 
 /* instructions.c */
-void		run(char *cmd, t_list **stack_a, t_list **stack_b, int x);
+void		instruct(char *cmd, t_list **stack_a, t_list **stack_b, int x);
 
 /* sort.c */
 void		sort(t_list **stack);
@@ -37,8 +37,8 @@ int			stack_max(t_list *stack);
 int			min(int a, int b);
 
 /* sort_big_utils */
-int			stack_idx_minmax(t_list *stack, int n);
-void		get_min_rotate(t_list *stack_a, t_list *stack_b, int *a, int *b);
+int			stack_minmax(t_list *stack, int n);
+void		rotate_min(t_list *stack_a, t_list *stack_b, int *a, int *b);
 void		rotate_same(t_list **stack_a, t_list **stack_b, int a, int b);
 void		rotate_diff(t_list **stack_a, t_list **stack_b, int a, int b);
 
