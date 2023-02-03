@@ -6,7 +6,7 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:05:18 by pbureera          #+#    #+#             */
-/*   Updated: 2023/01/19 13:47:48 by pbureera         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:07:30 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 # include <stddef.h>
 
-# define BUFFEER_SIZE 5
+# define BUFFEER_SIZE 10
 
 /* utils.c */
 int			split_list(char ***array, char **argv, char *split);
